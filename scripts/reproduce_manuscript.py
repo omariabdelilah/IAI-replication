@@ -14,6 +14,14 @@ The script recomputes the Inclusive Adoption Index (IAI) from the raw extracted
 signals rather than reading the stored iai_score column, so the index formula
 itself is verified, not merely echoed.
 
+Note on rounding: the index is rounded to 10 decimal places after aggregation.
+The weighted sum 0.50*S + 0.30*I + 0.20*B is subject to binary floating-point
+representation error of order 1e-16, which splits mathematically identical
+scores into distinct float values. Pearson correlations and group means are
+unaffected, but rank-based statistics (Spearman's rho, Kruskal-Wallis H) treat
+those spurious differences as tie-breaking information. Rounding restores the
+20 distinct index values the scoring scheme actually admits.
+
 Usage
 -----
     python scripts/reproduce_manuscript.py
@@ -111,7 +119,9 @@ def build_components(df, neutral=0.3, barrier_mode="linear", declared_only=False
 def iai(s, i, b, weights=(ALPHA, BETA, GAMMA)):
     a, be, g = weights
     total = a + be + g
-    return (a * s + be * i + g * b) / total
+    # Rounded to 10 dp: see the note in the module docstring. Without this,
+    # floating-point error splits identical scores and biases rank statistics.
+    return ((a * s + be * i + g * b) / total).round(10)
 
 
 def app_means(df, score):
@@ -149,13 +159,14 @@ def main():
     s, i, b = build_components(df)
     df["S"], df["I"], df["B"] = s, i, b
     df["IAI"] = iai(s, i, b)
+    print(f"  Distinct IAI values = {df['IAI'].nunique()}   (scoring scheme admits 20)")
 
     header("HEADLINE FIGURES (Sections 4.1, 4.6)")
     check("Mean IAI, full corpus", df["IAI"].mean(), 0.7711)
     check("Review-level Pearson r with star rating",
           df["IAI"].corr(df["rating"]), 0.667)
     check("Review-level Spearman rho",
-          df["IAI"].corr(df["rating"], method="spearman"), 0.597)
+          df["IAI"].corr(df["rating"], method="spearman"), 0.601)
 
     # 95% CI via Fisher z
     r = df["IAI"].corr(df["rating"])
@@ -190,7 +201,8 @@ def main():
     ss_between = sum(len(g) * (g.mean() - grand) ** 2 for g in groups)
     eta2 = ss_between / ((df["IAI"] - grand) ** 2).sum()
     print(f"  ANOVA F = {f_stat:,.0f} (manuscript 25,270), eta^2 = {eta2:.3f} (0.447)")
-    print(f"  Kruskal-Wallis H = {h_stat:,.0f} (manuscript 48,932)")
+    print(f"  Kruskal-Wallis H = {h_stat:,.0f} (manuscript 49,282), "
+          f"eps^2 = {(h_stat - 4) / (n - 5):.3f} (0.394)")
 
     header("TABLE 12 - Inter-component correlations")
     print(df[["S", "I", "B"]].corr().round(3).to_string())
@@ -219,12 +231,15 @@ def main():
         sub["bg"] = sub["_barriers"].map(len).clip(upper=3)
         means = sub.groupby("bg")["rating"].mean().round(2).to_dict()
         print(f"  {label:<9s} (n = {len(sub):,})  mean rating by barrier count: {means}")
-    mix = df[df["sentiment"] == "mixed"]
-    m1, m0 = mix[mix["I"] == 1]["rating"], mix[mix["I"] == 0]["rating"]
-    pooled = np.sqrt(((len(m1) - 1) * m1.var() + (len(m0) - 1) * m0.var())
-                     / (len(m1) + len(m0) - 2))
-    print(f"  engagement within mixed: {m1.mean():.2f} vs {m0.mean():.2f}, "
-          f"Cohen's d = {(m1.mean() - m0.mean()) / pooled:.2f}   (manuscript 4.10 / 3.59 / 0.46)")
+    print("  engagement, mean star rating with vs. without, by stratum:")
+    for label in ["mixed", "negative", "positive", "neutral"]:
+        sub = df[df["sentiment"] == label]
+        e1, e0 = sub[sub["I"] == 1]["rating"], sub[sub["I"] == 0]["rating"]
+        pooled = np.sqrt(((len(e1) - 1) * e1.var() + (len(e0) - 1) * e0.var())
+                         / (len(e1) + len(e0) - 2))
+        tt = stats.ttest_ind(e1, e0, equal_var=False)
+        print(f"    {label:<9s} {e1.mean():.2f} vs {e0.mean():.2f}   "
+              f"d = {(e1.mean() - e0.mean()) / pooled:+.2f}   p = {tt.pvalue:.3g}")
 
     header("SECTION 4.10 - Higher- vs lower-performing groups")
     hi = df[df["app"].isin(HIGHER)]["IAI"]
@@ -254,7 +269,6 @@ def main():
             print(f"        {APP_LABEL[app]:<12s} {a21.mean() - a19.mean():+.3f}")
 
     header("FIGURE 6 - Adoption barriers (% of reviews)")
-    flat = [x for lst in df["_barriers"] for x in lst]
     for label in sorted(DECLARED_BARRIERS,
                         key=lambda k: -sum(1 for lst in df["_barriers"] if k in lst)):
         share = 100 * sum(1 for lst in df["_barriers"] if label in lst) / n
@@ -289,12 +303,27 @@ def main():
         print("  normalised OLS weights: " + str((w / w.sum()).round(3).to_dict())
               + "   (manuscript .488 / .087 / .425)")
 
+    if sm is not None:
+        header("SECTION 4.7 - Incremental validity with application fixed effects")
+        y = df["rating"].astype(float)
+        dummies = pd.get_dummies(df["app"], prefix="app", drop_first=True).astype(float)
+        base = sm.OLS(y, sm.add_constant(pd.concat([df[["S"]], dummies], axis=1))).fit(cov_type="HC1")
+        full = sm.OLS(y, sm.add_constant(pd.concat([df[["S", "I", "B"]], dummies], axis=1))).fit(cov_type="HC1")
+        print(f"  with application fixed effects: R2 {base.rsquared:.3f} -> {full.rsquared:.3f}"
+              f"   Delta R^2 = {full.rsquared - base.rsquared:.4f}   (pooled 0.019)")
+        print("  Delta R^2 within each application:")
+        for app, grp in df.groupby("app"):
+            r1 = sm.OLS(grp["rating"].astype(float), sm.add_constant(grp[["S"]])).fit().rsquared
+            r2 = sm.OLS(grp["rating"].astype(float), sm.add_constant(grp[["S", "I", "B"]])).fit().rsquared
+            print(f"    {APP_LABEL[app]:<12s} n = {len(grp):>6,}   "
+                  f"{r1:.3f} -> {r2:.3f}   Delta R^2 = {r2 - r1:.4f}")
+
     header("TABLE 14 - Component-wise ablation (review level)")
-    for name, weights, comps in [
-        ("Sentiment only (S)", (1, 0, 0), None),
-        ("S + I", (0.5, 0.3, 0), None),
-        ("S + B", (0.5, 0, 0.2), None),
-        ("Full IAI (S+I+B)", (0.5, 0.3, 0.2), None),
+    for name, weights in [
+        ("Sentiment only (S)", (1, 0, 0)),
+        ("S + I", (0.5, 0.3, 0)),
+        ("S + B", (0.5, 0, 0.2)),
+        ("Full IAI (S+I+B)", (0.5, 0.3, 0.2)),
     ]:
         score = iai(df["S"], df["I"], df["B"], weights)
         print(f"  {name:<22s} Pearson r = {score.corr(df['rating']):.3f}   "
