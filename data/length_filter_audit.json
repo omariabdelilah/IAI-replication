@@ -1,0 +1,165 @@
+{
+ "capped_n": 215066,
+ "removed_n": 90091,
+ "retained_n": 124975,
+ "removed_share": 41.89,
+ "per_app": {
+  "cih_pay": {
+   "capped": 18562,
+   "removed": 10305,
+   "retained": 8257,
+   "removed_share": 55.5,
+   "mean_rating_removed": 4.46,
+   "mean_rating_retained": 3.3,
+   "share5_removed": 78.3,
+   "share5_retained": 47.6,
+   "share1_removed": 9.1,
+   "share1_retained": 35.0
+  },
+  "mpesa": {
+   "capped": 62357,
+   "removed": 25583,
+   "retained": 36774,
+   "removed_share": 41.0,
+   "mean_rating_removed": 4.55,
+   "mean_rating_retained": 4.2,
+   "share5_removed": 76.9,
+   "share5_retained": 64.9,
+   "share1_removed": 4.8,
+   "share1_retained": 10.6
+  },
+  "mtn_momo": {
+   "capped": 12444,
+   "removed": 4539,
+   "retained": 7905,
+   "removed_share": 36.5,
+   "mean_rating_removed": 4.3,
+   "mean_rating_retained": 3.04,
+   "share5_removed": 71.4,
+   "share5_retained": 39.8,
+   "share1_removed": 9.9,
+   "share1_retained": 38.7
+  },
+  "opay": {
+   "capped": 50000,
+   "removed": 18316,
+   "retained": 31684,
+   "removed_share": 36.6,
+   "mean_rating_removed": 4.59,
+   "mean_rating_retained": 4.18,
+   "share5_removed": 79.6,
+   "share5_retained": 66.7,
+   "share1_removed": 4.2,
+   "share1_retained": 11.8
+  },
+  "pocket_bank": {
+   "capped": 13975,
+   "removed": 7249,
+   "retained": 6726,
+   "removed_share": 51.9,
+   "mean_rating_removed": 4.68,
+   "mean_rating_retained": 3.61,
+   "share5_removed": 83.2,
+   "share5_retained": 52.2,
+   "share1_removed": 3.9,
+   "share1_retained": 25.1
+  },
+  "wave": {
+   "capped": 57728,
+   "removed": 24099,
+   "retained": 33629,
+   "removed_share": 41.7,
+   "mean_rating_removed": 4.52,
+   "mean_rating_retained": 4.36,
+   "share5_removed": 76.2,
+   "share5_retained": 67.1,
+   "share1_removed": 5.1,
+   "share1_retained": 6.3
+  }
+ },
+ "removed_share_range": [
+  36.5,
+  55.5
+ ],
+ "app_by_removed_chi2": {
+  "chi2": 2725.2,
+  "dof": 5,
+  "p": 0.0,
+  "cramers_v": 0.113
+ },
+ "star_dist_removed": {
+  "1": 5.4,
+  "2": 1.6,
+  "3": 4.0,
+  "4": 11.2,
+  "5": 77.7
+ },
+ "star_dist_retained": {
+  "1": 13.9,
+  "2": 3.6,
+  "3": 6.3,
+  "4": 13.6,
+  "5": 62.5
+ },
+ "mean_rating_removed": 4.54,
+ "mean_rating_retained": 4.07,
+ "star_by_removed_chi2": {
+  "chi2": 6835.5,
+  "dof": 4,
+  "p": 0.0,
+  "cramers_v": 0.178
+ },
+ "extreme_share_removed": 83.1,
+ "extreme_share_retained": 76.5,
+ "poststrat": {
+  "mpesa": {
+   "base": 0.824,
+   "reweighted": 0.845,
+   "diff": 0.021
+  },
+  "wave": {
+   "base": 0.819,
+   "reweighted": 0.826,
+   "diff": 0.007
+  },
+  "opay": {
+   "base": 0.791,
+   "reweighted": 0.812,
+   "diff": 0.021
+  },
+  "pocket_bank": {
+   "base": 0.635,
+   "reweighted": 0.736,
+   "diff": 0.101
+  },
+  "cih_pay": {
+   "base": 0.592,
+   "reweighted": 0.707,
+   "diff": 0.115
+  },
+  "mtn_momo": {
+   "base": 0.579,
+   "reweighted": 0.643,
+   "diff": 0.064
+  }
+ },
+ "poststrat_tau": 1.0,
+ "poststrat_partition_preserved": true,
+ "poststrat_ranking": [
+  "mpesa",
+  "wave",
+  "opay",
+  "pocket_bank",
+  "cih_pay",
+  "mtn_momo"
+ ],
+ "poststrat_tau_SB": 1.0,
+ "poststrat_partition_preserved_SB": true,
+ "poststrat_group_means": [
+  0.828,
+  0.693
+ ],
+ "poststrat_gap": 0.135,
+ "base_gap": 0.212,
+ "star_ranking_tau_full_vs_retained": 1.0
+}

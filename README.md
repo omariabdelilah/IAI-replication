@@ -1,4 +1,4 @@
-# Inclusive Adoption Index (IAI) — replication materials
+# Adoption Quality Index (AQI) — replication materials
 
 Data and code accompanying:
 
@@ -6,10 +6,17 @@ Data and code accompanying:
 > of FinTech Adoption Quality — Evidence from Six African Mobile Finance
 > Applications.** *Scientific African* (under review).
 
-The Inclusive Adoption Index (IAI) measures the **quality** of FinTech adoption —
+The Adoption Quality Index (AQI) measures the **quality** of FinTech adoption —
 rather than its extent — directly from user-generated app-store reviews. It
 combines three components: affective evaluation (sentiment), behavioural
 continuance (engagement), and the absence of experienced friction (barriers).
+
+> **Second revision.** The index was called the *Inclusive Adoption Index (IAI)*
+> in earlier versions. It was renamed because its construct definition concerns
+> the quality of adoption, not inclusion. The baseline barrier count now uses only
+> the nine declared barrier categories (see *The index* below). Column names in
+> the data file (`inclusion_signal`, `iai_score`) are kept unchanged for
+> compatibility with earlier versions.
 
 ---
 
@@ -18,10 +25,15 @@ continuance (engagement), and the absence of experienced friction (barriers).
 ```
 data/
   extracted_signals.csv          124,953 rows — the analytical sample
+  length_filter_audit.json       aggregate results of the <3-word filter audit (Table 4)
 scripts/
-  reproduce_manuscript.py        regenerates every number in the paper
+  aqi_core.py                    index definition shared by all scripts
+  reproduce_manuscript.py        prints headline values next to the manuscript's
+  compute_results.py             every index-dependent number, written to JSON
+  make_figures.py                Figures 2, 4, 5, 6 and 8
   01_language_rederivation.py    text-based language labelling (Section 3.2)
   02_nlp_benchmark.py            VADER / mBERT / Gemini comparison (Section 4.9)
+  03_length_filter_audit.py      audit of the <3-word exclusion (Section 3.3; needs raw text)
 requirements.txt
 ```
 
@@ -46,16 +58,17 @@ pip install -r requirements.txt
 python scripts/reproduce_manuscript.py
 ```
 
-Runtime is under a minute. The script recomputes the IAI from the raw extracted
+Runtime is about a minute. The scripts recompute the AQI from the raw extracted
 signals rather than reading the stored `iai_score` column, so the index formula
-itself is verified. It prints the manuscript value next to each computed value.
+itself is verified. `reproduce_manuscript.py` prints each headline value next to
+the value printed in the manuscript; `compute_results.py` writes every
+index-dependent number (Tables 7, 9–15, Figures 2 and 4–8, Sections 3.6 and
+4.3–4.7) to JSON. `--labels all` reproduces the first-revision baseline, and
+`--raw DIR` adds the exact-text-duplicate robustness row, which needs the review
+text.
 
-Covered: sample cascade (Table 5) · Table 8 · sentiment distribution (§4.2) ·
-Table 11 with effect sizes · Table 12 · Table 13 · within-stratum evidence
-(§4.7) · group separation and Cohen's *d* (§4.10) · Table 9 decomposition ·
-Figure 6 barriers · Figure 7 cultural factors · engagement (§4.5) ·
-non-conforming labels (§3.4) · empirical weights (§3.6) · Table 14 ablation ·
-the full Table 6 sensitivity battery.
+`03_length_filter_audit.py` also needs the raw review text; its aggregate output
+is deposited as `data/length_filter_audit.json`.
 
 ---
 
@@ -78,7 +91,7 @@ the full Table 6 sensitivity battery.
 | `cultural_factors` | str | JSON-style list, closed taxonomy of 6 categories |
 | `inclusion_signal` | str | `strong` / `moderate` / `weak` / `none` |
 | `n_barriers` | int | Count of barrier mentions, i.e. *n<sub>i</sub>* in Eq. (3) |
-| `iai_score` | float | Per-review IAI under the baseline specification |
+| `iai_score` | float | Per-review index under the first-revision specification (all extracted barrier labels counted). The scripts recompute the index and do not use this column |
 
 ### Known data caveat
 
@@ -90,11 +103,16 @@ This is a defect in schema enforcement, disclosed in Section 3.4 of the paper
 and reproduced here unaltered rather than silently cleaned.
 
 Its direction was checked: the affected reviews are predominantly negative (mean
-star rating 2.20 against 4.07 for the corpus). The alternative specification
-restricted to the nine declared categories is reported as a robustness check —
-application means differ by at most 0.006, the ranking is identical
-(Kendall's *τ* = 1.000), and the review-level correlation moves from
-*r* = 0.667 to 0.665. `reproduce_manuscript.py` computes both.
+star rating 2.20 against 4.07 for the corpus).
+
+**Baseline since the second revision.** Because the instrument is defined by its
+declared taxonomy, the baseline counts only schema-conforming barrier labels. The
+63 mentions that are snake_case spellings of a declared category (e.g.
+`failed_transactions`) are normalised to it; the other 5,551 non-conforming
+mentions (22 strings) are not counted. Counting every extracted string (the
+first-revision baseline) is kept as a sensitivity analysis: application means
+differ by at most 0.006, the ranking is identical (Kendall's *τ* = 1.000), and
+the review-level correlation is *r* = 0.665 under the baseline against 0.667.
 
 ---
 
@@ -103,14 +121,14 @@ application means differ by at most 0.006, the ranking is identical
 For each review *i*:
 
 ```
-IAI_i = α·S_i + β·I_i + γ·B_i        α = 0.50, β = 0.30, γ = 0.20
-B_i   = max(0, 1 − 0.25 · n_i)
+AQI_i = α·S_i + β·I_i + γ·B_i        α = 0.50, β = 0.30, γ = 0.20
+B_i   = max(0, 1 − 0.25 · n_i)      n_i = distinct declared barrier categories
 I_i   = 1 if any engagement signal is present, else 0
 S_i   = 1.00 positive | 0.50 mixed | 0.30 neutral | 0.00 negative
 ```
 
 Weights are theoretically motivated rather than fitted. Empirically estimated
-(OLS, normalised) weights are 0.488 / 0.087 / 0.425; application rankings are
+(OLS, normalised) weights are 0.540 / 0.086 / 0.374; application rankings are
 invariant between the two schemes (*τ* = 1.000). An `S + B` variant with
 engagement removed is reported throughout as a declared alternative
 specification — every substantive conclusion holds under both.
@@ -140,7 +158,7 @@ sentiment, mean Jaccard 0.765 for barriers, *κ* = 0.462 for binary engagement.
 
 The corpus captures the experience of **Google Play reviewers** — a self-selected
 population motivated to publicly rate an application — not of the full user base,
-and not of the underlying population of FinTech adopters. The IAI is best read as
+and not of the underlying population of FinTech adopters. The AQI is best read as
 an index of *reviewed* adoption experience.
 
 Country-level aggregates are arithmetically determined by application-level
