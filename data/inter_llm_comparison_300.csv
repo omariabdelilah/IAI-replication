@@ -1,0 +1,301 @@
+idx,lang,app,rating,gemini_sentiment,claude_sentiment,gemini_inclusion,claude_inclusion,gemini_barriers,claude_barriers,sentiment_disagree,inclusion_disagree,barrier_jaccard
+0,en,mpesa,5,positive,positive,weak,weak,,,False,False,1
+1,en,opay,4,mixed,mixed,moderate,weak,limited features,limited features,False,True,1
+2,fr,wave,5,neutral,neutral,strong,none,,,False,True,1
+3,ar,cih_pay,5,positive,positive,moderate,weak,,,False,True,1
+4,en,mpesa,1,negative,negative,none,none,,,False,False,1
+5,en,mtn_momo,3,negative,negative,none,none,app crashes; reliability,app crashes,False,False,0.5
+6,en,opay,3,positive,positive,moderate,moderate,,,False,False,1
+7,fr,wave,5,negative,negative,weak,none,limited features,limited features,False,True,1
+8,ar,pocket_bank,4,positive,positive,strong,weak,,,False,True,1
+9,fr,wave,3,neutral,neutral,moderate,weak,limited features,limited features,False,True,1
+10,en,mpesa,4,negative,negative,weak,none,poor customer service,limited features,False,True,0
+11,ar,pocket_bank,5,neutral,neutral,none,none,,,False,False,1
+12,en,mtn_momo,1,negative,negative,none,none,failed transactions,,False,False,0
+13,ar,cih_pay,4,neutral,neutral,none,none,limited features,,False,False,0
+14,en,mtn_momo,5,positive,positive,moderate,weak,,,False,True,1
+15,en,opay,5,negative,negative,moderate,none,limited features,failed transactions,False,True,0
+16,en,mtn_momo,5,neutral,positive,none,none,,,True,False,1
+17,en,mtn_momo,4,negative,mixed,none,none,network connectivity; slow loading,slow loading,True,False,0.5
+18,fr,wave,5,mixed,mixed,weak,weak,limited features,limited features,False,False,1
+19,fr,wave,3,neutral,neutral,weak,none,security concerns,,False,True,0
+20,fr,wave,4,positive,positive,weak,weak,,,False,False,1
+21,fr,wave,5,negative,negative,none,none,app crashes,,False,False,0
+22,en,opay,5,mixed,positive,moderate,moderate,failed transactions,limited features,True,False,0
+23,en,wave,3,mixed,mixed,moderate,weak,limited features,limited features,False,True,1
+24,fr,wave,4,negative,mixed,weak,weak,network connectivity,network connectivity,True,False,1
+25,ar,pocket_bank,5,mixed,mixed,moderate,weak,failed transactions; reliability,failed transactions,False,True,0.5
+26,en,mtn_momo,5,neutral,neutral,weak,none,kyc verification,,False,True,0
+27,en,wave,3,neutral,neutral,weak,none,,,False,True,1
+28,fr,wave,5,neutral,neutral,weak,none,limited features,,False,True,0
+29,en,opay,1,negative,negative,weak,none,poor customer service,kyc verification; poor customer service,False,True,0.5
+30,ar,cih_pay,1,negative,negative,weak,none,kyc verification,kyc verification,False,True,1
+31,fr,wave,1,neutral,negative,weak,none,limited features,limited features,True,True,1
+32,ar,pocket_bank,5,mixed,mixed,weak,weak,app crashes; failed transactions; poor customer service,app crashes,False,False,0.3333333333333333
+33,ar,cih_pay,1,negative,negative,moderate,weak,failed transactions,failed transactions,False,True,1
+34,en,opay,1,negative,negative,none,none,kyc verification; poor customer service,kyc verification,False,False,0.5
+35,fr,wave,4,negative,mixed,strong,weak,limited features; merchant payments,limited features,True,True,0.5
+36,ar,cih_pay,5,positive,positive,none,weak,,,False,True,1
+37,fr,pocket_bank,3,negative,neutral,weak,none,security concerns,security concerns,True,True,1
+38,ar,cih_pay,1,neutral,neutral,none,weak,limited features,limited features,False,True,1
+39,fr,wave,4,positive,positive,strong,weak,,,False,True,1
+40,fr,wave,1,negative,negative,none,none,failed transactions,failed transactions,False,False,1
+41,fr,wave,5,positive,positive,weak,weak,,,False,False,1
+42,en,opay,5,neutral,positive,none,none,limited features,limited features,True,False,1
+43,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+44,fr,wave,5,positive,positive,strong,weak,,,False,True,1
+45,fr,wave,5,positive,positive,strong,moderate,,,False,True,1
+46,en,mpesa,5,negative,mixed,weak,none,app crashes; reliability,app crashes,True,True,0.5
+47,en,mpesa,1,negative,negative,none,none,app crashes,app crashes,False,False,1
+48,fr,cih_pay,1,negative,negative,none,none,app crashes; kyc verification; security concerns,app crashes; kyc verification,False,False,0.6666666666666666
+49,en,opay,1,negative,negative,none,none,kyc verification; poor customer service,kyc verification; poor customer service,False,False,1
+50,en,mtn_momo,5,positive,positive,strong,weak,,,False,True,1
+51,fr,wave,3,mixed,mixed,strong,weak,app crashes; limited features,limited features,False,True,0.5
+52,en,mtn_momo,1,negative,negative,none,none,app crashes,app crashes,False,False,1
+53,fr,wave,4,positive,positive,strong,strong,,,False,False,1
+54,en,mtn_momo,1,neutral,neutral,none,none,,,False,False,1
+55,en,opay,5,neutral,neutral,weak,none,limited features,limited features,False,True,1
+56,fr,pocket_bank,3,negative,negative,weak,none,app crashes; reliability,app crashes,False,True,0.5
+57,fr,cih_pay,1,negative,negative,none,none,failed transactions; kyc verification; poor customer service,kyc verification,False,False,0.3333333333333333
+58,en,mpesa,5,positive,positive,strong,weak,,,False,True,1
+59,ar,pocket_bank,1,negative,negative,none,none,failed transactions,,False,False,0
+60,en,mpesa,4,negative,neutral,weak,none,reliability,limited features,True,True,0
+61,ar,cih_pay,2,neutral,neutral,moderate,weak,kyc verification,,False,True,0
+62,ar,pocket_bank,5,positive,positive,moderate,weak,,,False,True,1
+63,en,opay,5,positive,positive,moderate,weak,,,False,True,1
+64,fr,wave,5,neutral,neutral,none,none,,,False,False,1
+65,ar,pocket_bank,5,mixed,mixed,none,weak,failed transactions; slow loading,slow loading,False,True,0.5
+66,ar,pocket_bank,1,negative,negative,none,none,app crashes; poor customer service,app crashes; poor customer service,False,False,1
+67,en,mpesa,4,mixed,mixed,weak,weak,slow loading,slow loading,False,False,1
+68,ar,cih_pay,4,neutral,positive,none,weak,limited features,,True,True,0
+69,en,mpesa,5,positive,positive,strong,weak,,,False,True,1
+70,fr,cih_pay,1,negative,negative,weak,none,app crashes; failed transactions; high fees,app crashes; failed transactions,False,True,0.6666666666666666
+71,fr,wave,3,mixed,mixed,strong,weak,network connectivity,network connectivity,False,True,1
+72,en,mtn_momo,1,negative,negative,none,none,security concerns,security concerns,False,False,1
+73,en,mpesa,5,positive,positive,moderate,weak,,,False,True,1
+74,fr,wave,4,mixed,mixed,strong,weak,network connectivity,network connectivity,False,True,1
+75,en,mpesa,4,neutral,neutral,none,weak,limited features,limited features,False,True,1
+76,fr,wave,5,positive,positive,weak,weak,,,False,False,1
+77,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+78,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+79,en,opay,5,neutral,neutral,weak,none,limited features,limited features,False,True,1
+80,fr,cih_pay,5,neutral,neutral,weak,none,security concerns,security concerns,False,True,1
+81,fr,wave,3,neutral,neutral,weak,none,limited features,limited features,False,True,1
+82,ar,cih_pay,1,negative,negative,none,weak,high fees; poor customer service,high fees; poor customer service,False,True,1
+83,fr,pocket_bank,1,mixed,mixed,weak,none,app crashes,app crashes,False,True,1
+84,fr,wave,4,positive,positive,moderate,weak,,,False,True,1
+85,fr,wave,4,negative,neutral,none,weak,failed transactions; poor customer service,poor customer service,True,True,0.5
+86,fr,pocket_bank,5,negative,neutral,none,weak,limited features,limited features,True,True,1
+87,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+88,ar,pocket_bank,1,negative,negative,weak,none,app crashes; poor customer service,kyc verification,False,True,0
+89,ar,cih_pay,5,positive,positive,weak,moderate,,,False,True,1
+90,en,opay,5,positive,positive,moderate,weak,,,False,True,1
+91,fr,wave,1,negative,negative,weak,none,app crashes; slow loading,,False,True,0
+92,fr,wave,5,positive,positive,moderate,moderate,,,False,False,1
+93,en,opay,1,negative,negative,weak,none,ease of use; network connectivity; poor customer service,network connectivity; poor customer service,False,True,0.6666666666666666
+94,ar,cih_pay,5,mixed,mixed,weak,weak,limited features; poor customer service,limited features,False,False,0.5
+95,ar,cih_pay,1,negative,negative,none,none,app crashes,app crashes,False,False,1
+96,fr,wave,5,neutral,neutral,weak,weak,limited features,limited features,False,False,1
+97,fr,wave,5,mixed,mixed,strong,weak,limited features,limited features,False,True,1
+98,en,mpesa,4,neutral,neutral,strong,weak,network connectivity,network connectivity,False,True,1
+99,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+100,en,opay,1,negative,negative,weak,weak,limited features; poor customer service; security concerns,kyc verification; limited features,False,False,0.25
+101,fr,pocket_bank,5,positive,positive,strong,weak,,,False,True,1
+102,ar,cih_pay,5,mixed,positive,weak,none,failed transactions,app crashes,True,True,0
+103,en,mpesa,1,positive,positive,moderate,weak,,,False,True,1
+104,en,mpesa,4,mixed,positive,none,weak,network connectivity,network connectivity,True,True,1
+105,en,mpesa,1,negative,negative,weak,none,app crashes,,False,True,0
+106,fr,cih_pay,5,mixed,mixed,none,moderate,poor customer service,poor customer service,False,True,1
+107,ar,cih_pay,1,negative,negative,weak,none,failed transactions; network connectivity,network connectivity,False,True,0.5
+108,en,mpesa,5,positive,positive,strong,weak,,,False,True,1
+109,fr,cih_pay,1,negative,negative,none,none,app crashes; failed transactions,app crashes,False,False,0.5
+110,fr,cih_pay,5,mixed,positive,weak,none,app crashes; failed transactions,app crashes,True,True,0.5
+111,en,mpesa,4,mixed,positive,weak,moderate,limited features,limited features,True,True,1
+112,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+113,en,opay,4,mixed,mixed,moderate,weak,poor customer service,,False,True,0
+114,en,mpesa,5,mixed,mixed,weak,weak,app crashes,app crashes,False,False,1
+115,fr,wave,1,negative,negative,weak,none,limited features,limited features,False,True,1
+116,fr,wave,5,mixed,mixed,strong,weak,limited features,limited features,False,True,1
+117,en,mpesa,5,neutral,neutral,weak,weak,,,False,False,1
+118,en,opay,3,positive,positive,weak,weak,,,False,False,1
+119,en,mpesa,5,positive,positive,weak,weak,,,False,False,1
+120,ar,cih_pay,5,neutral,neutral,none,none,,,False,False,1
+121,fr,pocket_bank,3,neutral,neutral,none,none,,,False,False,1
+122,en,opay,2,positive,positive,moderate,weak,,,False,True,1
+123,fr,wave,5,neutral,neutral,none,none,,,False,False,1
+124,fr,wave,3,mixed,mixed,moderate,weak,failed transactions; network connectivity,network connectivity,False,True,0.5
+125,en,mpesa,4,mixed,mixed,none,weak,limited features,limited features,False,True,1
+126,ar,pocket_bank,5,mixed,positive,weak,weak,security concerns,security concerns,True,False,1
+127,fr,wave,5,mixed,positive,weak,weak,limited features,limited features,True,False,1
+128,en,mpesa,4,positive,positive,weak,weak,,,False,False,1
+129,en,mtn_momo,5,neutral,neutral,weak,none,ease of use,,False,True,0
+130,fr,wave,5,mixed,mixed,moderate,weak,network connectivity,network connectivity,False,True,1
+131,fr,pocket_bank,1,negative,negative,none,none,app crashes; slow loading,app crashes,False,False,0.5
+132,fr,wave,5,neutral,neutral,none,weak,,,False,True,1
+133,fr,cih_pay,1,negative,negative,none,none,security concerns,security concerns,False,False,1
+134,en,opay,1,neutral,negative,weak,none,limited features; security concerns,limited features,True,True,0.5
+135,en,opay,1,neutral,neutral,none,none,poor customer service; security concerns,,False,False,0
+136,fr,cih_pay,2,neutral,negative,none,none,security concerns,security concerns,True,False,1
+137,fr,wave,4,neutral,neutral,moderate,weak,,,False,True,1
+138,fr,wave,5,neutral,neutral,none,weak,kyc verification; poor customer service,,False,True,0
+139,ar,pocket_bank,4,positive,positive,strong,weak,,,False,True,1
+140,fr,cih_pay,2,negative,negative,none,none,app crashes; failed transactions; reliability,,False,False,0
+141,fr,wave,4,mixed,positive,moderate,weak,limited features,limited features,True,True,1
+142,fr,wave,5,neutral,neutral,weak,none,,,False,True,1
+143,fr,wave,4,mixed,positive,weak,weak,security concerns,security concerns,True,False,1
+144,en,opay,1,negative,negative,none,none,failed transactions; poor customer service,poor customer service,False,False,0.5
+145,en,opay,2,mixed,mixed,weak,weak,limited features,limited features,False,False,1
+146,fr,pocket_bank,3,mixed,mixed,moderate,weak,slow loading,slow loading,False,True,1
+147,fr,wave,5,positive,positive,moderate,moderate,,,False,False,1
+148,ar,pocket_bank,1,negative,negative,none,none,app crashes; reliability,app crashes,False,False,0.5
+149,fr,wave,2,positive,positive,moderate,weak,,,False,True,1
+150,en,mtn_momo,3,mixed,mixed,none,weak,limited features,limited features,False,True,1
+151,fr,pocket_bank,1,negative,negative,none,none,app crashes,app crashes,False,False,1
+152,en,mpesa,1,negative,negative,none,none,app crashes; reliability,app crashes,False,False,0.5
+153,fr,wave,1,neutral,neutral,strong,none,,,False,True,1
+154,en,opay,5,neutral,neutral,moderate,none,poor customer service,poor customer service,False,True,1
+155,en,mpesa,3,mixed,mixed,weak,weak,transaction speed,slow loading,False,False,0
+156,en,mtn_momo,1,negative,negative,weak,none,network connectivity,network connectivity,False,True,1
+157,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+158,en,mpesa,5,positive,positive,weak,weak,,,False,False,1
+159,fr,wave,5,positive,positive,weak,weak,,,False,False,1
+160,en,wave,1,negative,negative,weak,none,limited features,,False,True,0
+161,fr,wave,3,neutral,neutral,weak,moderate,limited features,limited features,False,True,1
+162,ar,cih_pay,5,positive,positive,weak,weak,,,False,False,1
+163,ar,cih_pay,4,mixed,mixed,weak,weak,app crashes; failed transactions,kyc verification,False,False,0
+164,ar,cih_pay,1,negative,negative,none,weak,failed transactions; limited features,limited features,False,True,0.5
+165,fr,wave,5,mixed,positive,strong,weak,limited features,,True,True,0
+166,en,wave,2,neutral,neutral,strong,none,limited features,limited features,False,True,1
+167,en,mtn_momo,4,mixed,positive,weak,weak,limited features,limited features,True,False,1
+168,fr,wave,4,neutral,neutral,none,none,,,False,False,1
+169,ar,cih_pay,3,neutral,neutral,none,none,security concerns,limited features; security concerns,False,False,0.5
+170,fr,pocket_bank,1,negative,negative,none,none,app crashes; reliability,app crashes,False,False,0.5
+171,en,opay,5,positive,positive,moderate,weak,,,False,True,1
+172,en,mpesa,5,mixed,positive,moderate,weak,network connectivity,network connectivity,True,True,1
+173,ar,pocket_bank,5,mixed,negative,moderate,weak,app crashes; failed transactions,app crashes,True,True,0.5
+174,fr,wave,5,positive,positive,weak,weak,,,False,False,1
+175,en,mpesa,4,mixed,mixed,weak,weak,network connectivity,network connectivity,False,False,1
+176,fr,wave,4,mixed,positive,moderate,weak,limited features,limited features,True,True,1
+177,ar,cih_pay,1,negative,negative,weak,weak,failed transactions; network connectivity; poor customer service,kyc verification; poor customer service,False,False,0.25
+178,en,opay,5,neutral,neutral,none,none,limited features,limited features,False,False,1
+179,fr,cih_pay,5,mixed,mixed,moderate,weak,poor customer service,poor customer service,False,True,1
+180,en,mpesa,4,positive,positive,moderate,weak,,,False,True,1
+181,ar,cih_pay,5,positive,positive,moderate,weak,,,False,True,1
+182,en,opay,5,mixed,neutral,weak,weak,limited features,limited features,True,False,1
+183,en,opay,1,neutral,neutral,none,none,limited features,,False,False,0
+184,fr,pocket_bank,2,negative,negative,none,none,app crashes; poor customer service,app crashes,False,False,0.5
+185,en,opay,4,mixed,positive,strong,strong,limited features,limited features,True,False,1
+186,en,mpesa,5,mixed,positive,strong,weak,network connectivity,network connectivity,True,True,1
+187,fr,wave,3,neutral,neutral,weak,none,limited features,limited features,False,True,1
+188,fr,pocket_bank,1,negative,negative,none,none,app crashes; reliability,app crashes,False,False,0.5
+189,ar,pocket_bank,1,mixed,negative,moderate,weak,app crashes; kyc verification,kyc verification,True,True,0.5
+190,fr,wave,5,positive,positive,strong,weak,,,False,True,1
+191,fr,wave,5,neutral,positive,moderate,weak,security concerns,security concerns,True,True,1
+192,en,mpesa,1,negative,negative,none,none,app crashes; network connectivity,network connectivity,False,False,0.5
+193,en,mtn_momo,5,positive,positive,weak,weak,,,False,False,1
+194,en,opay,3,mixed,mixed,weak,weak,reliability,,False,False,0
+195,ar,cih_pay,5,positive,positive,weak,weak,,,False,False,1
+196,en,mtn_momo,5,neutral,neutral,none,weak,,,False,True,1
+197,en,wave,3,mixed,mixed,strong,weak,limited features,limited features,False,True,1
+198,ar,pocket_bank,4,negative,negative,none,none,app crashes,app crashes,False,False,1
+199,en,mtn_momo,3,negative,negative,none,none,ease of use; failed transactions,kyc verification; limited features,False,False,0
+200,ar,cih_pay,5,positive,positive,moderate,weak,,,False,True,1
+201,fr,wave,4,mixed,mixed,weak,moderate,limited features,limited features,False,True,1
+202,ar,pocket_bank,5,mixed,mixed,none,weak,app crashes; failed transactions,limited features,False,True,0
+203,en,opay,2,positive,positive,moderate,weak,,,False,True,1
+204,fr,wave,5,neutral,neutral,weak,weak,limited features,limited features,False,False,1
+205,en,mpesa,1,positive,positive,weak,weak,,,False,False,1
+206,en,mpesa,5,neutral,positive,weak,weak,,,True,False,1
+207,fr,wave,5,mixed,neutral,strong,none,limited features,limited features,True,True,1
+208,fr,wave,5,positive,positive,moderate,weak,,,False,True,1
+209,fr,wave,4,mixed,mixed,weak,weak,poor customer service,poor customer service,False,False,1
+210,fr,wave,5,mixed,positive,moderate,moderate,limited features,limited features,True,False,1
+211,en,opay,1,neutral,neutral,none,none,network connectivity,network connectivity,False,False,1
+212,ar,pocket_bank,5,positive,positive,strong,weak,,,False,True,1
+213,fr,wave,5,positive,positive,strong,weak,,,False,True,1
+214,en,opay,3,mixed,mixed,weak,weak,failed transactions; poor customer service,limited features,False,False,0
+215,fr,wave,5,positive,positive,strong,moderate,,,False,True,1
+216,ar,cih_pay,1,mixed,positive,weak,weak,language barrier,limited features,True,False,0
+217,en,wave,5,neutral,neutral,weak,none,limited features,,False,True,0
+218,fr,wave,5,neutral,neutral,moderate,none,poor customer service,,False,True,0
+219,ar,cih_pay,5,mixed,mixed,moderate,none,failed transactions,app crashes,False,True,0
+220,fr,wave,4,mixed,positive,moderate,weak,limited features,limited features,True,True,1
+221,en,mtn_momo,5,neutral,neutral,moderate,none,,,False,True,1
+222,en,mtn_momo,2,negative,negative,weak,none,ease of use; reliability; slow loading,kyc verification; slow loading,False,True,0.25
+223,fr,pocket_bank,2,neutral,neutral,none,none,app crashes; ease of use,kyc verification,False,False,0
+224,ar,pocket_bank,1,negative,negative,none,none,app crashes; poor customer service; reliability,app crashes,False,False,0.3333333333333333
+225,en,mtn_momo,4,mixed,positive,moderate,weak,limited features,limited features,True,True,1
+226,fr,wave,2,negative,negative,weak,none,app crashes,app crashes,False,True,1
+227,fr,wave,5,positive,positive,weak,weak,,,False,False,1
+228,en,mpesa,5,positive,positive,moderate,weak,,,False,True,1
+229,en,mpesa,1,negative,negative,none,none,limited features,limited features,False,False,1
+230,ar,pocket_bank,1,mixed,mixed,none,weak,app crashes; reliability,app crashes,False,True,0.5
+231,en,opay,5,mixed,negative,weak,weak,failed transactions,failed transactions; kyc verification,True,False,0.5
+232,en,mpesa,1,neutral,neutral,none,none,limited features,limited features,False,False,1
+233,en,mpesa,4,mixed,mixed,weak,weak,reliability,slow loading,False,False,0
+234,en,opay,5,positive,positive,none,weak,,,False,True,1
+235,ar,cih_pay,5,positive,positive,none,weak,,,False,True,1
+236,ar,pocket_bank,3,neutral,neutral,weak,none,ease of use; security concerns,,False,True,0
+237,fr,pocket_bank,4,negative,neutral,weak,weak,security concerns,security concerns,True,False,1
+238,en,opay,5,mixed,positive,weak,moderate,limited features,limited features,True,True,1
+239,en,mtn_momo,5,negative,negative,strong,weak,failed transactions,failed transactions,False,True,1
+240,en,opay,5,neutral,neutral,moderate,weak,limited features; poor customer service,poor customer service,False,True,0.5
+241,en,opay,5,positive,positive,weak,weak,,,False,False,1
+242,fr,wave,4,neutral,neutral,strong,weak,limited features,limited features,False,True,1
+243,ar,cih_pay,3,mixed,negative,weak,none,app crashes,app crashes,True,True,1
+244,en,mpesa,3,negative,neutral,weak,none,limited features,limited features,True,True,1
+245,fr,cih_pay,2,mixed,mixed,none,weak,poor customer service; wide agent network,poor customer service,False,True,0.5
+246,en,opay,5,positive,positive,strong,moderate,,,False,True,1
+247,en,opay,1,negative,negative,none,none,poor customer service; security concerns,kyc verification,False,False,0
+248,en,mpesa,5,mixed,positive,moderate,weak,slow loading,slow loading,True,True,1
+249,ar,cih_pay,5,positive,positive,moderate,weak,,,False,True,1
+250,fr,pocket_bank,1,negative,negative,none,none,failed transactions; limited features,failed transactions,False,False,0.5
+251,ar,pocket_bank,4,neutral,neutral,none,none,,,False,False,1
+252,fr,wave,4,mixed,positive,moderate,weak,limited features,limited features,True,True,1
+253,ar,cih_pay,3,positive,positive,strong,weak,,,False,True,1
+254,fr,cih_pay,4,mixed,mixed,weak,weak,app crashes,app crashes,False,False,1
+255,fr,pocket_bank,5,negative,negative,none,none,limited features,kyc verification,False,False,0
+256,ar,pocket_bank,4,neutral,neutral,none,none,kyc verification,,False,False,0
+257,fr,wave,4,positive,positive,weak,weak,,,False,False,1
+258,en,opay,5,positive,positive,weak,weak,,,False,False,1
+259,ar,cih_pay,5,mixed,positive,none,moderate,limited features,limited features,True,True,1
+260,fr,cih_pay,1,negative,negative,none,none,limited features,limited features,False,False,1
+261,ar,cih_pay,5,neutral,neutral,none,none,,,False,False,1
+262,en,opay,4,mixed,mixed,moderate,weak,limited features,limited features,False,True,1
+263,ar,cih_pay,5,positive,positive,weak,weak,,,False,False,1
+264,fr,wave,5,positive,positive,weak,weak,,,False,False,1
+265,fr,wave,5,neutral,positive,moderate,moderate,limited features,limited features,True,False,1
+266,en,opay,4,neutral,neutral,none,none,,,False,False,1
+267,fr,wave,5,mixed,positive,moderate,weak,,limited features,True,True,0
+268,en,opay,5,neutral,neutral,none,none,,,False,False,1
+269,en,opay,5,mixed,positive,weak,weak,limited features,limited features,True,False,1
+270,ar,cih_pay,1,neutral,negative,none,none,,app crashes,True,False,0
+271,ar,cih_pay,4,neutral,neutral,none,weak,limited features,limited features,False,True,1
+272,fr,wave,5,neutral,neutral,none,none,,,False,False,1
+273,en,wave,5,positive,positive,moderate,weak,,,False,True,1
+274,en,mpesa,4,neutral,positive,none,weak,,,True,True,1
+275,en,opay,5,positive,positive,moderate,weak,,,False,True,1
+276,fr,wave,5,neutral,neutral,strong,none,kyc verification,kyc verification,False,True,1
+277,ar,pocket_bank,1,neutral,negative,none,none,app crashes,app crashes,True,False,1
+278,ar,cih_pay,2,neutral,neutral,weak,weak,limited features; poor customer service,,False,False,0
+279,en,mpesa,5,negative,neutral,none,none,network connectivity,network connectivity,True,False,1
+280,en,mpesa,5,mixed,positive,moderate,weak,limited features,limited features,True,True,1
+281,ar,pocket_bank,1,negative,negative,moderate,none,failed transactions; limited features,failed transactions,False,True,0.5
+282,fr,cih_pay,5,neutral,positive,weak,weak,limited features,limited features; security concerns,True,False,0.5
+283,en,mtn_momo,5,neutral,neutral,moderate,weak,limited features,,False,True,0
+284,en,mpesa,5,positive,positive,moderate,weak,,,False,True,1
+285,en,opay,3,mixed,mixed,weak,weak,limited features; poor customer service,kyc verification,False,False,0
+286,fr,wave,5,mixed,positive,weak,moderate,limited features,limited features,True,True,1
+287,fr,wave,4,mixed,mixed,moderate,weak,limited features,limited features,False,True,1
+288,fr,wave,3,neutral,neutral,strong,weak,limited features,limited features,False,True,1
+289,fr,pocket_bank,1,negative,negative,none,none,app crashes,app crashes,False,False,1
+290,fr,cih_pay,5,positive,positive,weak,weak,,,False,False,1
+291,en,opay,1,negative,negative,none,none,failed transactions; poor customer service; security concerns,failed transactions; poor customer service,False,False,0.6666666666666666
+292,fr,wave,3,mixed,mixed,weak,weak,poor customer service; security concerns,poor customer service; security concerns,False,False,1
+293,en,mpesa,5,neutral,neutral,none,none,,,False,False,1
+294,ar,cih_pay,1,negative,negative,none,none,app crashes; reliability,app crashes,False,False,0.5
+295,en,opay,5,positive,positive,strong,moderate,,,False,True,1
+296,fr,pocket_bank,5,positive,positive,moderate,weak,,,False,True,1
+297,fr,cih_pay,2,negative,negative,none,none,app crashes,app crashes,False,False,1
+298,en,opay,2,neutral,negative,weak,moderate,limited features,limited features,True,True,1
+299,fr,cih_pay,4,negative,mixed,weak,weak,app crashes; reliability,app crashes,True,False,0.5
