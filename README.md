@@ -44,6 +44,8 @@ scripts/
   02_nlp_benchmark.py              VADER / mBERT / Gemini comparison (Section 4.10)
   03_length_filter_audit.py        audit of the <3-word exclusion (Section 3.3; needs raw text)
   04_inter_llm_agreement.py        every coefficient in Table 20 (Section 4.9)
+  05_revision3_analyses.py         Tables 10, 11, 12, 13 and 18; application-mean and
+                                   effect-size intervals (Sections 4.3–4.5, 4.8)
 requirements.txt
 ```
 
@@ -89,6 +91,19 @@ python scripts/04_inter_llm_agreement.py
 recomputes Table 20 from the deposited rater outputs: Cohen's kappa, raw agreement,
 Gwet's AC1 and PABAK, each with a 95 per cent bootstrap interval, plus the mean
 Jaccard similarity of the two raters' barrier sets.
+
+```bash
+python scripts/05_revision3_analyses.py
+```
+
+reproduces every number added in the third revision that is computed from the signal
+file: the decomposition of Table 10 for every year against the 2019 base, the
+within-application changes of Table 11, the barrier-cluster sensitivity of Table 12, the
+driver frequencies and their exploratory association with the AQI in Table 13, the
+barrier regression of Table 18, and the bootstrap intervals for the application means,
+Cohen's d and Cliff's delta. Bootstrap intervals use a fixed seed and reproduce the
+manuscript exactly. `make_figures.py` draws Figure 2 with both the observed series and
+the series at fixed 2019 application shares.
 
 ---
 
