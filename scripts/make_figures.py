@@ -5,7 +5,7 @@ make_figures.py
 Regenerates the index-dependent manuscript figures from the deposited
 extracted-signal dataset under the baseline specification (Section 3.6):
 
-    figure3.png  Figure 2  AQI temporal evolution (95% CI)
+    figure3.png  Figure 2  AQI temporal evolution, observed vs fixed 2019 composition (95% CI)
     figure1.png  Figure 4  AQI by application
     figure2.png  Figure 5  AQI aggregated by primary operational market
     figure6.png  Figure 6  top adoption barriers (declared categories)
@@ -41,20 +41,47 @@ APP_BAR_COLORS = ["#1a9850", "#66bd63", "#a6d96a", "#fdae61", "#f46d43", "#d7302
 
 
 def temporal(df, out):
+    """Figure 2: observed annual mean AQI against the mean at fixed 2019 application
+    shares (third revision). M-Pesa has no 2019 reviews and so carries zero weight in
+    the fixed-composition series."""
     y = df.groupby("year")["AQI"].agg(["mean", "std", "count"])
     ci = 1.96 * y["std"] / np.sqrt(y["count"])
+    w19 = df[df["year"] == y.index.min()]["app"].value_counts(normalize=True)
+
+    def fixed(frame):
+        m = frame.groupby("app")["AQI"].mean()
+        w = w19.reindex(m.index).fillna(0.0)
+        return float((w / w.sum() * m).sum())
+
+    rng = np.random.default_rng(42)
+    cf, lo, hi = [], [], []
+    for yr in y.index:
+        fr = df[df["year"] == yr]
+        cf.append(fixed(fr))
+        boots = [fixed(fr.loc[rng.choice(fr.index.values, len(fr), replace=True)]) for _ in range(1000)]
+        lo.append(np.percentile(boots, 2.5)); hi.append(np.percentile(boots, 97.5))
+
     fig, ax = plt.subplots(figsize=(10, 6.2), dpi=200)
     ax.fill_between(y.index, y["mean"] - ci, y["mean"] + ci, color=GREEN, alpha=0.22,
-                    linewidth=0, label="95% CI")
-    ax.plot(y.index, y["mean"], marker="o", markersize=10, linewidth=3, color=GREEN, label="Mean AQI")
+                    linewidth=0, label="95% CI (observed)")
+    ax.fill_between(y.index, lo, hi, color=BLUE, alpha=0.15, linewidth=0,
+                    label="95% CI (fixed composition)")
+    ax.plot(y.index, y["mean"], marker="o", markersize=10, linewidth=3, color=GREEN,
+            label="Mean AQI (observed)")
+    ax.plot(y.index, cf, marker="s", markersize=8, linewidth=2.5, color=BLUE, linestyle="--",
+            label="Mean AQI at fixed 2019 composition")
     for yr, m in y["mean"].items():
         ax.annotate(f"{m:.3f}", (yr, m), textcoords="offset points", xytext=(0, 12),
-                    ha="center", fontsize=11, fontweight="bold")
+                    ha="center", fontsize=11, fontweight="bold", color=GREEN)
+    for yr, m in zip(y.index, cf):
+        ax.annotate(f"{m:.3f}", (yr, m), textcoords="offset points", xytext=(0, -20),
+                    ha="center", fontsize=10, fontweight="bold", color=BLUE)
     ax.set_xlabel("Year"); ax.set_ylabel("Mean AQI Score")
-    ax.set_title("AQI Temporal Evolution (2019-2024)", fontweight="bold")
-    ax.set_xticks(y.index); ax.set_ylim(0.60, 0.83)
+    ax.set_title("AQI Temporal Evolution (2019-2024): observed vs fixed corpus composition",
+                 fontweight="bold")
+    ax.set_xticks(y.index); ax.set_ylim(0.60, 0.85)
     ax.grid(True, axis="y", alpha=0.3)
-    ax.legend(loc="lower right", framealpha=0.95)
+    ax.legend(loc="lower right", framealpha=0.95, fontsize=10)
     fig.tight_layout(); fig.savefig(out, bbox_inches="tight"); plt.close(fig)
 
 
